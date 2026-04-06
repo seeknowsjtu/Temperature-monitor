@@ -389,6 +389,7 @@ class MainWindow(QMainWindow):
         self._log("停止轮询。")
 
     def clear_history(self) -> None:
+        self.session_t0 = time.perf_counter()
         self.time_buffer.clear()
         self.data_buffers = [deque(maxlen=self.max_points) for _ in range(self.CHANNEL_COUNT)]
         for curve in self.curves:
